@@ -4,7 +4,7 @@
 import json
 import requests
 
-def emotion_detector(text_to_analyze):
+def emotion_detector(text_to_analyse):
     ''' This function sends text to be analyzed by the 
         Emotion Prediction function of the Watson NLP Library.
     '''
@@ -16,7 +16,7 @@ def emotion_detector(text_to_analyze):
     headers = {"grpc-metadata-mm-model-id": "emotion_aggregated-workflow_lang_en_stock"}
 
     # Payload with the text to be analyzed.
-    payload = { "raw_document": { "text": text_to_analyze } }
+    payload = { "raw_document": { "text": text_to_analyse } }
 
     # Make a POST request to WATSON with payload, and headers.
     response = requests.post(url, headers=headers, json=payload, timeout=5000)
@@ -33,7 +33,7 @@ def emotion_detector(text_to_analyze):
         }
 
     # Format response into JSON
-    formatted_response = json.loads(response)
+    formatted_response = json.loads(response.text)
 
     # Set up a blank dictionary for the formatted return response.
     emotion_scores = {}
